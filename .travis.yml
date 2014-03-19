@@ -1,0 +1,13 @@
+language: ruby
+rvm:
+  - 2.1.1
+env:
+  - DB=mysql
+script:
+  - RAILS_ENV=test bundle exec rake db:migrate; bundle exec rspec
+before_script:
+  - mysql -e "create database peer_together_test"
+branches:
+  only:
+    - master
+    - development
